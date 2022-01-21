@@ -1,0 +1,24 @@
+convertToBase64(file:File) {
+this.myImage = new Observable((subscriber: Subscriber<any>) => {
+this.readFile(file, subscriber)
+})
+this.myImage.subscribe((d) => {
+console.log(d)
+})
+}
+readFile(file:File, subscriber:Subscriber<any>) {
+const fileReader = new FileReader();
+fileReader.readAsDataURL(file);
+
+fileReader.onload = () => {
+subscriber.next(fileReader.result)
+subscriber.complete()
+};
+fileReader.onerror = (error) => {
+subscriber.error(error)
+}
+}
+onChange($event: Event) {
+const file = ($event.target as HTMLInputElement).files[0];
+this.convertToBase64(file)
+console.log(this.myImage)

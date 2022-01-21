@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Online Shopping</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item dropdown menu-area">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+        </a>
+        <ul class="dropdown-menu mega-area" aria-labelledby="mega-one">
+          <div class="row">
+             <div class=".col-sm-6 col-lg-3" *ngFor="let category of categories">
+               <a  (click)="goToCategory(category.category_id)"><h5>{{category.category_title}}</h5></a>
+               <div *ngFor="let subCategory of subCategories">
+                 <a *ngIf="subCategory.category_id == category.category_id" routerLink="/clothing" class="dropdown-item">{{subCategory.sub_category_title}}</a>
+               </div>
+             </div>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <div class="btn btn-primary">Search</div>
+        </form>
+      </li>
+      </ul>
+      </div>
+      <div>
+        <ul class="nav navbar-nav mr-auto navbar-right">
+          <li *ngIf="!user" class="nav-item active"><a class="nav-link" href="register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li *ngIf="!user" class="nav-item active"><a class="nav-link" href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li *ngIf="user" class="nav-item active"><a class="nav-link" (click)="logout()"  href="/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li *ngIf="user"  class='nav-item active cart'><a href="cart" ><i class="fa" style="font-size:24px">&#xf07a;</i>
+            <span class='badge badge-warning' id='lblCartCount'> {{5}}</span>
+          </a></li>
+          <li *ngIf="user" class='nav-item active account-info'><a href="account"><i class="fas fa-user-circle" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>

@@ -1,0 +1,29 @@
+
+
+ .form-control {
+    border-radius: 3px;
+    width: 600px;
+    margin-left: 20px;
+}
+
+.search-icon {
+    position: absolute;
+    z-index: 10;
+    right: 40%;
+    top: 20px;
+    color: blue;
+}
+button{
+    color: #2874f0;
+    font-weight: 500;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    height: 32px;
+    padding: 5px 40px 30px;
+    border: 1px solid #dbdbdb;
+
+ }
+ .navbar{
+     color:rgb(255, 255, 255);
+ }

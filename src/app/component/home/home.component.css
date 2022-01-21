@@ -1,0 +1,13 @@
+.banner {
+    background-image: linear-gradient(rgb(10, 191, 223), rgb(230, 15, 69));
+     top:20%;
+  }
+  h1{
+      text-align: center;
+  }
+  img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }

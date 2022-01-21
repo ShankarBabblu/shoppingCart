@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+flex-direction: row;
+flex-wrap: wrap;
+  }
+   .card{
+ border:1px solid black;
+}

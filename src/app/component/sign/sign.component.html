@@ -1,0 +1,103 @@
+<section class="" style="background-image: linear-gradient(to left, aqua, rgb(83, 109, 109))">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form [formGroup]="userForm" (ngSubmit) = "submit()" >
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" class="form-control form-group form-control-lg" formControlName="first_name"  />
+                  <label class="form-label" for="form3Example1cg">First Name
+                    <span 
+                    class="text-danger" 
+                    *ngIf="userForm.get('first_name')?.errors && 
+                        userForm.get('first_name')?.hasError('required')"
+                >*</span>        
+                  </label>
+     
+                </div>
+                <p *ngIf="userForm.get('first_name')?.touched && !userForm.get('first_name')?.valid" class="alert alert-danger">min length of 7 characters is required</p>
+                     
+
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" class="form-control form-group form-control-lg"  formControlName="last_name" />
+                  <label class="form-label" for="form3Example1cg">Last Name
+                    <span 
+                    class="text-danger" 
+                    *ngIf="userForm.get('last_name')?.errors && 
+                        userForm.get('last_name')?.hasError('required')"
+                >*</span>  
+                  </label>
+                </div>
+                <p *ngIf=" userForm.get('last_name')?.touched && !userForm.get('last_name')?.valid"  class="alert alert-danger"> min length of 5 characters is required</p>
+
+                <div class="form-outline mb-4">
+                  <input type="email" id="form3Example3cg" class="form-control form-group form-control-lg" formControlName="email"  />
+                  <label class="form-label" for="form3Example3cg">Your Email
+                    <span 
+                    class="text-danger" 
+                    *ngIf="userForm.get('email')?.errors && 
+                        userForm.get('email')?.hasError('required')"
+                >*</span>  
+                  </label>
+                </div>
+                <p *ngIf=" userForm.get('email')?.touched && !userForm.get('email')?.valid"  class="alert alert-danger"> You must Enter a value</p>
+
+                <div class="form-outline mb-4">
+                  <input type="tel" id="form3Example3cg" class="form-control form-group form-control-lg" formControlName="mobile" />
+                  <label class="form-label" for="form3Example3cg">Mobile Number
+                    <span 
+                    class="text-danger" 
+                    *ngIf="userForm.get('mobile')?.errors && 
+                        userForm.get('mobile')?.hasError('required')"
+                >*</span>  
+                  </label>
+                </div>
+                <p *ngIf=" userForm.get('mobile')?.touched && !userForm.get('mobile')?.valid"  class="alert alert-danger"> minimum length 10 is required <br> maxlength of 12 should not be exceeded</p>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" formControlName="password" />
+                  <label class="form-label" for="form3Example4cg">Password
+                    <span 
+                    class="text-danger" 
+                    *ngIf="userForm.get('password')?.errors && 
+                        userForm.get('password')?.hasError('required')"
+                >*</span>  
+                  </label>
+                </div>
+                <p *ngIf=" userForm.get('password')?.touched && !userForm.get('password')?.valid"  class="alert alert-danger"> minimum length 5 is required</p>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4cg" class="form-control form-group form-control-lg" formControlName="password_verify" />
+                  <label class="form-label" for="form3Example4cg"> Repeat Your Password
+                    <span 
+                    class="text-danger" 
+                    *ngIf="userForm.get('password_verify')?.errors && 
+                        userForm.get('password_verify')?.hasError('required')"
+                >*</span>
+                <div *ngIf="!passwordMatch" class="alert alert-danger form-control"> password should match</div>
+                  </label>
+                </div>
+                <p *ngIf=" userForm.get('password_verify')?.touched && !userForm.get('password_verify')?.valid"  class="alert alert-danger"> Confirm Your Password </p>
+
+                <div class="d-flex justify-content-center">
+                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" 
+                  [disabled] = "!userForm.valid" >Submit</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">
+                  Have already an account? <a routerLink="/login" class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

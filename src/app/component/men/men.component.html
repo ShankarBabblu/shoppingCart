@@ -1,0 +1,26 @@
+<h1>Men wear clothing</h1>
+
+    
+   <div class = "container">
+
+    <div *ngFor="let menItem of menData" class = "card">
+        
+        <img  class = "menimg" [src]="menItem.p_img" alt="menImage" (click)="displayInfo = true">
+        <div *ngIf="displayInfo">
+            {{menItem.des }}<br>
+            {{menItem.price}}<br>
+            {{menItem.sellername}}
+        </div>
+        <button (click) = "atc(cartId,menItem.Pid)">
+            Add to Cart
+        </button>
+    <button (click)="buyNow()">Buy Now</button>
+    </div>
+    </div>
+
+
+       
+<br>
+   
+<br>
+

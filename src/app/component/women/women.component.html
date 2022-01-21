@@ -1,0 +1,19 @@
+<h1>Women Clothing</h1>
+
+<div class = "container">
+   
+
+    <div *ngFor="let womenItem of womenData" class = "card">
+        <img  class = "womenimg" [src]="womenItem.p_img" alt="womenImage" (click)="displayInfo = true">
+         <div *ngIf="displayInfo">
+            {{womenItem.des }}<br>
+            {{womenItem.price}}<br>
+            {{womenItem.sellername}} 
+        </div> 
+        <button (click) = "addTC(cartId,womenItem.Pid)">
+            Add to Cart
+        </button>
+  
+    <button (click)="buyNow()">Buy Now</button>
+    </div>
+ </div>
