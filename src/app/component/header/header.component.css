@@ -5,7 +5,7 @@
 }
 
 .search-icon {
-    position: absolute;
+    position: relative;
     z-index: 10;
     right: 59%;
     top: 20px;
@@ -27,7 +27,6 @@ body{
     right:0;
     padding: 15px;
 }
-
 h5{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 2px;

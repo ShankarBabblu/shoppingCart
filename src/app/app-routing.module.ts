@@ -27,7 +27,7 @@ const routes: Routes = [
   {path : 'upload',component:UploadImagesComponent},
   {path: 'cart',component:CartComponent},
   {path:'products',component:ProductsComponent},
-  {path : 'sign',component:SignComponent},
+  {path : 'register',component:SignComponent},
   {path:'billing',component:BillingComponent},
   {path : 'header',component:HeaderComponent},
 

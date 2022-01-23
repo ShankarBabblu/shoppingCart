@@ -1,23 +1,22 @@
 
-
-<div class="form-bg" style = "background-image: linear-gradient(to right, rgb(0, 174, 255), rgb(109, 83, 93))">
-    <div class="container">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-md-offset-3 col-md-6">
+<div class="form-bg" style = "background-image: linear-gradient(to right, rgb(0, 174, 255), rgb(109, 83, 93)) ">
+    <div class="container ">
+        <div class="row d-flex justify-content-center align-items-center form p-5 ">
+            <div class=" col-md-6 ">
                 <form class="form-horizontal" [formGroup]="userLoginForm" (ngSubmit) = "onClickSubmit()">
-                    <h2>Login Form</h2>
+                    <h2>Log In</h2>
                     <div class="alert alert-danger" *ngIf="wrongUser">Invalid username or password</div>
                     <div class="form-group">
-                        <input type="email" class="form-control form-group "  formControlName="email" placeholder="Email" required>
+                        <input type="email" class="form-control form-group" formControlName="email" placeholder="Email" required>
                         <i class="fa fa-user"></i>
                     </div>
                     <div class="form-group help">
-                        <input type="password" class="form-control form-group " formControlName="password" placeholder="Enter Your Password" required>
+                        <input type="password" class="form-control form-group" formControlName="password" placeholder="Enter Your Password" required>
                         <i class="fa fa-lock"></i>
-                      
+                     
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-block btn-login">
+                        <button type="submit" class="btn btn-block btn-login">Submit</button>
                     </div>
                 </form>
             </div>
