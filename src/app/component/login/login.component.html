@@ -1,36 +1,26 @@
 
 
-<form [formGroup]="userLoginForm" (ngSubmit) = "onClickSubmit()" >
-
-  <div class="simple-login-container">
-    <h2>Login Form</h2>
-    <div class="alert alert-danger" *ngIf="wrongUser">Invalid username or password</div>
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <input type="email" class="form-control form-group" formControlName="email" placeholder="Email" required>
+<div class="form-bg" style = "background-image: linear-gradient(to right, rgb(0, 174, 255), rgb(109, 83, 93))">
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-offset-3 col-md-6">
+                <form class="form-horizontal" [formGroup]="userLoginForm" (ngSubmit) = "onClickSubmit()">
+                    <h2>Login Form</h2>
+                    <div class="alert alert-danger" *ngIf="wrongUser">Invalid username or password</div>
+                    <div class="form-group">
+                        <input type="email" class="form-control form-group "  formControlName="email" placeholder="Email" required>
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control form-group " formControlName="password" placeholder="Enter Your Password" required>
+                        <i class="fa fa-lock"></i>
+                      
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-block btn-login">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <input type="password" placeholder="Enter your Password" class="form-control form-group" formControlName="password" required>
-        </div>
-    </div>&nbsp;
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <input type="submit" class="btn btn-block btn-login">
-        </div>
-    </div>
-    </div>
-  
-  <!-- <label class="l1">Email ID:  </label> &nbsp;
-  <input type = "text" name = "emailid"  ngModel required>
-  <br/>
-  <label class="l2">Password: </label>&nbsp;
-  <input type = "password" name = "passwd" ngModel required>
-  <br/>
-  <div class = "btn">
-  <input mat-button color="primary" style="margin-right: 16px" type = "submit" value = "submit" [disabled] = !userlogin.valid>
-  <button mat-button color="primary" type="reset">Clear</button>
-</div>  -->
-
-</form>
+</div>
