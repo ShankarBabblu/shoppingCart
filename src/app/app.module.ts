@@ -10,8 +10,6 @@ import { ProductsComponent } from './component/products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UploadImagesComponent } from './component/upload-images/upload-images.component';
-import { WomenComponent } from './component/women/women.component';
-import { KidComponent } from './component/kid/kid.component';
 import { SignComponent } from './component/sign/sign.component';
 import { BillingComponent } from './component/billing/billing.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -31,8 +29,6 @@ const material = [MatToolbarModule]
     CartComponent,
     ProductsComponent,
     UploadImagesComponent,
-    WomenComponent,
-    KidComponent,
     SignComponent,
     BillingComponent,
     HeaderComponent,

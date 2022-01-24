@@ -93,6 +93,10 @@ export class CartComponent implements OnInit {
     }
     console.log(this.total)
   }
+  shop()
+  {
+    this.router.navigate(['/categories'])
+  }
  
   }
   // emptyCart(){

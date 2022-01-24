@@ -8,10 +8,10 @@ import { ApiserviceService } from 'src/app/services/apiservice.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  searchTerm:any;
   categories : any;
   subCategories :any
   user:any;
-  public searchTerm !: string;
   constructor( private service:ApiserviceService, private router : Router) { }
 
   ngOnInit(): void {
@@ -25,11 +25,6 @@ export class HeaderComponent implements OnInit {
       console.log(this.subCategories)
     })
   }
-  search(event:any){
-    this.searchTerm = (event.target as HTMLInputElement).value;
-    console.log(this.searchTerm);
-    this.service.search.next(this.searchTerm);
-  }
   goToCategory(category_id:any){
     this.router.navigate(['category',category_id]).then(() => {
       window.location.reload()
@@ -41,6 +36,11 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.user = null
     sessionStorage.removeItem('user')
+  }
+
+
+  search(){
+    this.router.navigate([`/search/${this.searchTerm}`])
   }
   
 }

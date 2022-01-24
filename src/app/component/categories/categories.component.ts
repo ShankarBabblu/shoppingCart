@@ -68,13 +68,13 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       console.log(this.products)
     }
   }
-  addToCart(product_id : number){
-    let cart = sessionStorage.getItem('cart')
-    console.log(cart)
-    let cart_id = 1
-    this.service.addItemToCart(product_id, cart_id).subscribe(res => {
-      console.log(res)
-    })
+ addToCart(product_category_id:number){
+    // let cart = sessionStorage.getItem('cart')
+    // console.log(cart)
+    // let cart_id = 1
+    // this.service.addItemToCart(product_category_id, cart_id).subscribe(res => {
+    //   console.log(res)
+    // })
   }
 
   ngOnInit(): void {

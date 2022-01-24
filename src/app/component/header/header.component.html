@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <a class="navbar-brand" href="#">Online Shopping</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,23 +18,17 @@
              <div class=".col-sm-6 col-lg-3" *ngFor="let category of categories">
                <a  (click)="goToCategory(category.category_id)"><h5>{{category.category_title}}</h5></a>
                <div *ngFor="let subCategory of subCategories">
-                 <a *ngIf="subCategory.category_id == category.category_id" routerLink="/clothing" class="dropdown-item">{{subCategory.sub_category_title}}</a>
+                 <a *ngIf="subCategory.category_id == category.category_id" class="dropdown-item">{{subCategory.sub_category_title}}</a>
                </div>
              </div>
           </div>
         </ul>
       </li>
       <li>
-        <form class="form-inline ">
-          <div class="input-group">
-            <div class="input-group rounded">
-              <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-              <span class="input-group-text border-0" id="search-addon">
-                <i class="fas fa-search"></i>
-              </span>
-            </div>
-          </div>
-        </form>
+        <input type="text" placeholder="search here" [(ngModel)]="searchTerm" >
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fas fa-search" (click)="search()" ></i>
+        </span>
       </li>
       </ul>
       </div>

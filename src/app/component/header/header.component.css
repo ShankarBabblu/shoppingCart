@@ -18,14 +18,12 @@ body{
 .menu-area
 {
     position: static;
+    
 }
-.mega-menu
+.mega-area
 {
-    position: absolute;
-    width: 100%;
-    left:0%;
-    right:0;
-    padding: 15px;
+    left: 5%;
+    margin-left: 5%;
 }
 h5{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

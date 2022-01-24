@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 var con = mysql.createConnection({
     host:"localhost",
-    password :"root",
+    password :"12345",
     database:'shop',
     user: "root",
     port:3306,
@@ -93,6 +93,7 @@ con.connect(function(err) {
      let query = `select * from products;`
      execute(query,res)
    })
+   
   app.post('/login',function(req,res)
   {
     user = req.body.user

@@ -1,4 +1,7 @@
-
+h3
+{
+  text-transform: capitalize;
+}
 .main-container{
     text-align: center;
 }
@@ -9,9 +12,9 @@ img
 {
   padding: 5px;
   border: 1px solid blue;
-  width: 40%;
+  width: 30%;
   margin-left: 10px;
-  display:inline-table;
+ 
 }
 .column {
     width: 40%;
