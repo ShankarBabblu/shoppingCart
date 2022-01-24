@@ -9,11 +9,12 @@ img
 {
   padding: 5px;
   border: 1px solid blue;
-  width: 50%;
+  width: 40%;
   margin-left: 10px;
+  display:inline-table;
 }
 .column {
-    width: 50%;
+    width: 40%;
     padding: 5px;
     
   }
