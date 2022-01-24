@@ -28,7 +28,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       this.currentComponent = res[0]
       this.category = res[0]
       console.log(this.category)
-      console.log(res)
+      // console.log(res)
       this.getSubCategories()
     })
   }
@@ -38,34 +38,27 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       this.subCategories = res
       this.sub_category = res
       console.log(this.sub_category)
-      console.log(res)
       this.getProductCategories()
     })
   }
+  
   getProductCategories() {
+    this.productCategories = []
     for (var subCategory of this.subCategories){
       console.log(subCategory.sub_category_id)
       this.service.getProductCategories(subCategory.sub_category_id).subscribe(res => {
         console.log(res)
-        this.product_category?.push(res)
-        // let data = {
-        //   subCategory : subCategory.sub_category_id,
-        //   value : res
-        // }
-        // this.productCategories.push(data)
         for(let item of res){
-          // this.product_category?.push(item)
           this.productCategories.push(item)
         }
         this.getProducts()
       })
     }
-    console.log(this.productCategories.length)
-    console.log(this.product_category)
-
   }
+
   getProducts() {
     console.log(this.productCategories) 
+    this.products = []
     for(var productCategory of this.productCategories){
       this.service.getProducts(productCategory.product_category_id).subscribe(res => {
         for( let item of res){
@@ -79,18 +72,17 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     let cart = sessionStorage.getItem('cart')
     console.log(cart)
     let cart_id = 1
-    // this.service.addItemToCart(product_id, cart_id).subscribe(res => {
-    //   console.log(res)
-    // })
+    this.service.addItemToCart(product_id, cart_id).subscribe(res => {
+      console.log(res)
+    })
   }
 
   ngOnInit(): void {
     this.currentCategoryId = this.activatedRoute.snapshot.paramMap.get('id')
     console.log(this.currentCategoryId)
-    this.getCurrentCategory(this.currentCategoryId)
-   
-    
+    this.getCurrentCategory(this.currentCategoryId) 
   }
+
   ngOnDestroy(): void {
       this.currentComponent = null
       this.subCategories = null

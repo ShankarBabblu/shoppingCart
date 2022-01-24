@@ -6,53 +6,28 @@
         <h2>{{subCategory.sub_category_title}}</h2>
         <div class="product-category" *ngFor="let productCategory of productCategories">
             <h3 *ngIf="productCategory.sub_category_id == subCategory.sub_category_id" >
-                {{productCategory.product_category_title}}</h3>
-                <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
-                    <div class="controls-top">
-                        <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-                        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
-                      </div>
-                      <ol class="carousel-indicators">
-                        <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
-                        <li data-target="#multi-item-example" data-slide-to="1"></li>
-                        <li data-target="#multi-item-example" data-slide-to="2"></li>
-                      </ol>
-            <!-- <div class="product" *ngFor="let product of products">
-                <div class="card" style="width: 18rem;" *ngIf = "product.product_category_id == productCategory.product_category_id">
-                    <img class="card-img-top" [src]="product.product_image" alt="product">
-                    <div class="card-body">
-                      <h5 class="card-title">{{product.product_title | titlecase}}</h5>
-                      <p class="card-text">{{product.product_description}}</p>
-                    </div>
-                    </div>
-                    <div class="card-body">
-                      <a href="#" class="card-link btn btn-primary">Add to Cart</a>
-                      <a href="#" class="card-link btn btn-secondary">Order now</a>
-                    </div>
+                {{productCategory.product_category_title}}</h3>        
+                <div class="row d-flex justify-content-center">
+                  <div class="mt-5 d-flex justify-content-center flex-wrap ">
+                 <div class="px-2 mb-2" *ngFor="let product of products">
+                  <div class="card " style="width: 20rem;" *ngIf = "product.product_category_id == productCategory.product_category_id">
+                  <div class="rounded mx-auto d-block">
+                  <img class="card-img-top"   [src]="product.product_image" alt="product">
                   </div>
-            </div> -->
-            <div class="carousel-inner" role="listbox">
-
-                <!--First slide-->
-                <div class="carousel-item active">
-        
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mb-2">
-                          <div class="product" *ngFor="let product of products">
-                            <img class="card-img-top" [src]="product.product_image" alt="product">
-                          <div class="card-body">
-                                  <h4 class="card-title">{{product.product_title | titlecase}}</h4>
-                          <p class="card-text">{{product.product_description}}</p>
-                          <div class="card-body">
-                            <a href="#" class="card-link btn btn-primary" (click)="addToCart(product.product_id)">Add to Cart</a>
-                            <a href="#" class="card-link btn btn-secondary">Order now</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-        </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{product.product_title | titlecase}}</h5>
+                    <p class="card-text">{{product.product_description}}</p>
+                  </div>
+                  <div class="card-body">
+                         <a href="#" class="card-link btn btn-primary">Add to Cart</a>
+                         <a href="#" class="card-link btn btn-secondary">Order now</a>
+                       </div>
+                </div>
+                </div>
+                </div>
+              </div>
+         </div> 
+                   
     </div>
 
 </div>
