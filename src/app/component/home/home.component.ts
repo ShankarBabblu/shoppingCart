@@ -15,18 +15,18 @@ export class HomeComponent implements OnInit {
   searchProduct:any
   constructor(private service:ApiserviceService, private activatedRoute: ActivatedRoute, private route : Router) { }
 
-  getAllProducts(){
-    this.service.getProductImages().subscribe(res =>
-      {
-          this.products = res
-          console.log(res)
-      })
-  }
   ngOnInit(): void {
     this.getAllProducts()
     this.activatedRoute.params.subscribe(params => {
       console.log(params['search'])
     })
+  }
+  getAllProducts(){
+    this.service.getProductImages().subscribe(res=>
+      {
+        this.products = res
+          console.log(res)
+      })
   }
 
 }

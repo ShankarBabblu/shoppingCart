@@ -9,9 +9,6 @@ export class ApiserviceService {
 
   url = 'http://localhost:3000/home'
   loginurl = 'http://localhost:3000/login';
-  menimgurl = 'http://localhost:3000/men/images';
-  womenimgurl = 'http://localhost:3000/women/images';
-  kidimgurl = 'http://localhost:3000/kid/images';
   cartItems = 'http://localhost:3000/cart'
   cartProducts = 'http://localhost:3000/cartProducts'
   signinurl = 'http://localhost:3000/signin';
@@ -38,20 +35,9 @@ export class ApiserviceService {
     return this.http.post(`http://localhost:3000/cart`, user)
   }
 
-  getMenImages(): Observable<any> {
-    return this.http.get(this.menimgurl);
-  }
-
   getProductImages():Observable<any>
   {
-    return this.http.get(`http://localhost:3000/products/images`)
-  }
-
-  getWomenImages(): Observable<any> {
-    return this.http.get(this.womenimgurl)
-  }
-  getKidImages(): Observable<any> {
-    return this.http.get(this.kidimgurl)
+    return this.http.get(`http://localhost:3000/product/images`)
   }
   getCartItems(userId: number): Observable<any> {
     return this.http.get(`http://localhost:3000/cart/${userId}`)

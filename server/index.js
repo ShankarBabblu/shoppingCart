@@ -88,9 +88,9 @@ con.connect(function(err) {
   })
 
 
-   app.get('/products/images',function(req,res)
+   app.get('/product/images',function(req,res)
    {
-     let query = `select * from products;`
+     let query = `select * from shop.products`
      execute(query,res)
    })
    
@@ -114,37 +114,6 @@ con.connect(function(err) {
       res.send(result)
     })
   })
-
-  app.get('/men/images',function(req,res)
-  {
-    let query = `select * from shop.product where cat_id = 1`
-    con.query(query, (err,result) =>
-    {
-      if(err) res.send(err)
-      res.send(result)
-    })
-  })
-  
-  app.get('/women/images',function(req,res){
-
-       let query = 'select * from shop.product where cat_id = 2'
-       con.query(query,(err,result) =>
-       {
-         if(err) res.send(err)
-         res.send(result)
-       })
-    })
-
-  app.get('/kid/images',function(req,res)
-  {
-    let query = 'select * from shop.product where cat_id = 3'
-    con.query(query,(err,result) =>
-    {
-      if(err) res.send(err)
-      res.send(result)
-    })
-  })
-
   app.get('/cart/:id', function(req,res) {
     var userId = req.params.id
     let query = `select * from shop.cart where user_id = ${userId}`
