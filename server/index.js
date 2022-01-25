@@ -135,7 +135,8 @@ con.connect(function(err) {
   
   app.get('/cart/items/:id', function(req,res) {
     var cartId = req.params.id
-    let query = `SELECT * FROM shop.cart_item inner join shop.product where shop.product.Pid = shop.cart_item.pid having cart_id=${cartId}`
+    // let query = `SELECT * FROM shop.cart_item inner join shop.product where shop.product.Pid = shop.cart_item.pid having cart_id=${cartId}`
+    let query = `SELECT * FROM shop.cart_items inner join products on cart_items.product_id = products.product_id where cart_id=${cartId}`
     con.query(query, (err, result) => {
       if(err) res.send(err)
       res.send(result)
@@ -153,10 +154,10 @@ con.connect(function(err) {
   app.post('/cart/add',function(req,res)
   {
     var cartId = req.body.cartId
-    var Pid= req.body.ProductId
+    var productId= req.body.productId
     console.log(cartId)
-    console.log(Pid)
-    let query = `insert into shop.cart_item(cart_id,pid,quantity) values(${cartId},${Pid},1)`;
+    console.log(productId)
+    let query = `insert into shop.cart_items(cart_id, product_id, quantity) values(${cartId},${productId},1)`;
     con.query(query,function(err,result)
     {
       if(err)
@@ -165,13 +166,20 @@ con.connect(function(err) {
     })
   })
 
+  app.delete('/cart/empty/:cart_id', function(req, res){
+    var cart_id = req.params.cart_id
+    console.log(cart_id)
+    let query = `delete from cart_items where cart_id = ${cart_id}`
+    execute(query, res)
+  })
+
   app.post('/cart/delete/:id',function(req,res)
   {
     var productId  = req.params.id
     var cart_id = req.body.cart_id
     console.log(productId)
 
-    let query = `delete from shop.cart_item where pid = ${productId} and cart_id =${cart_id}`
+    let query = `delete from shop.cart_items where product_id = ${productId} and cart_id =${cart_id}`
     con.query(query,(err,result) =>
     {
       if(err)
@@ -206,8 +214,9 @@ con.connect(function(err) {
 
     console.log(pid)
     console.log(quantity)
+    console.log(cart_id)
 
-    let query = `update shop.cart_item set quantity=${quantity} where pid=${pid} and cart_id=${cart_id};`
+    let query = `update shop.cart_items set quantity=${quantity} where product_id=${pid} and cart_id=${cart_id};`
     con.query(query, (err,result) =>
     {
       if(err)
@@ -225,7 +234,7 @@ con.connect(function(err) {
     console.log(pid)
     console.log(quantity)
 
-    let query = `delete from shop.cart_item where pid=${pid} and cart_id=${cart_id};`
+    let query = `delete from shop.cart_items where product_id=${pid} and cart_id=${cart_id};`
     con.query(query, (err,result) =>
     {
       if(err)

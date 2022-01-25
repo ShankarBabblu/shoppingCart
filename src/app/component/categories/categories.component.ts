@@ -16,6 +16,8 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   subCategories : any;
   productCategories: any = [];
   products : any = [];
+  product_id:number | any
+  cart_id:any
   title:any;
   category : category[] | undefined;
   sub_category : sub_category[] | undefined
@@ -68,19 +70,22 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       console.log(this.products)
     }
   }
- addToCart(product_category_id:number){
-    // let cart = sessionStorage.getItem('cart')
-    // console.log(cart)
-    // let cart_id = 1
-    // this.service.addItemToCart(product_category_id, cart_id).subscribe(res => {
-    //   console.log(res)
-    // })
+ addToCart(product_id:number){
+    let cart :any = sessionStorage.getItem("cart")
+    cart = JSON.parse(cart)
+    this.cart_id = cart[0].cart_id
+    console.log(this.cart_id)
+    console.log(product_id)
+    this.service.addItemToCart(this.cart_id,product_id).subscribe(res => {
+      console.log(res)
+    })
   }
 
   ngOnInit(): void {
     this.currentCategoryId = this.activatedRoute.snapshot.paramMap.get('id')
     console.log(this.currentCategoryId)
     this.getCurrentCategory(this.currentCategoryId) 
+    // this.addToCart(this.product_id)
   }
 
   ngOnDestroy(): void {

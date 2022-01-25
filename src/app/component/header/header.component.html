@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark bg-black">
   <a class="navbar-brand" href="#">Online Shopping</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -25,10 +25,15 @@
         </ul>
       </li>
       <li>
+        <div class="search-container">
         <input type="text" placeholder="search here" [(ngModel)]="searchTerm" >
-        <span class="input-group-text border-0" id="search-addon">
-          <i class="fas fa-search" (click)="search()" ></i>
-        </span>
+         <button>
+          <i class="fas fa-search"  (click)="search()" ></i>
+        </button>
+      </div>
+      <ul *ngFor="let data of productArray | filter: searchTerm">
+        <li>{{data}}</li>
+      </ul>
       </li>
       </ul>
       </div>

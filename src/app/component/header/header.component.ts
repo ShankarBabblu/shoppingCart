@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/services/apiservice.service';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,12 @@ export class HeaderComponent implements OnInit {
   categories : any;
   subCategories :any
   user:any;
-  constructor( private service:ApiserviceService, private router : Router) { }
+  productArray =[]
+  
+  constructor( private service:ApiserviceService, private router : Router,private http:HttpClient) {
+
+  
+  }
 
   ngOnInit(): void {
     this.isUserLoggedIn()
@@ -24,6 +31,7 @@ export class HeaderComponent implements OnInit {
       this.subCategories = res
       console.log(this.subCategories)
     })
+    
   }
   goToCategory(category_id:any){
     this.router.navigate(['category',category_id]).then(() => {

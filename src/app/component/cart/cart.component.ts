@@ -9,6 +9,7 @@ import { ApiserviceService } from 'src/app/services/apiservice.service';
 })
 export class CartComponent implements OnInit {
   user:any;
+  cart : any;
   cartData:any;
   cartProducts:any;
   cart_item:any
@@ -19,10 +20,13 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = sessionStorage.getItem('user')
+    this.cart = sessionStorage.getItem('cart')
     this.user = JSON.parse(this.user)
+    this.cart = JSON.parse(this.cart)
+    console.log(this.user)
+    console.log(this.cart[0])
     console.log(this.user.userid)
-    this.getCartItems()
-    
+    this.getCartProducts()
   }
   getCartItems(){
     this.service.getCartItems(this.user.userid).subscribe((res) => {
@@ -33,7 +37,8 @@ export class CartComponent implements OnInit {
     })
   }
   getCartProducts() {
-    this.service.getCartProducts(this.cartData.cart_id).subscribe((res) => {
+
+    this.service.getCartProducts(this.cart[0].cart_id).subscribe((res) => {
       console.log(res)
       this.cartProducts = res
       console.log(this.cartProducts)
@@ -46,38 +51,45 @@ export class CartComponent implements OnInit {
     console.log(this.cartProducts)
     // write a service here to remove the item from cart
 
-    this.service.deleteItemFromCart(product_id, this.cartData.cart_id, ).subscribe((res) =>
+    this.service.deleteItemFromCart(product_id, this.cart[0].cart_id, ).subscribe((res) =>
       {
         this.cartProducts.splice(index,1)
         console.log(res)
         console.log(this.cartProducts)
       })
   }
+
+  emptyCart(){
+    this.service.emptyCart(this.cart[0].cart_id).subscribe(res => {
+      console.log(res)
+      // clear cart here on this.cartProducts
+      this.cartProducts = null
+    })
+  }
   increamentQTY(pid:any,quantity:number, index:number)
   { 
-    
-    console.log(this.cartProducts)
-    this.service.increaseQTY(pid,quantity, this.cartData.cart_id).subscribe((res) =>
+    console.log(this.cart[0])
+    console.log(pid, quantity, index)
+    this.service.increaseQTY(pid,quantity, this.cart[0].cart_id).subscribe((res) =>
     {
       this.cartProducts[index].quantity++;
-      console.log(res)
-    
+      console.log(res)  
     })
 
   }
  
   decreamentQTY(pid:any,quantity:number, index: number)
   {
-    console.log(this.cartData.cart_id, index)
-    if(this.cartProducts[index].quantity <= 1){
-      this.service.deleteItemFromCart(pid, this.cartData.cart_id).subscribe((res) => {
+    console.log(pid, quantity)
+    if(quantity < 1){
+      this.service.deleteItemFromCart(pid, this.cart[0].cart_id).subscribe((res) => {
         this.cartProducts.splice(index,1)
         console.log(res)
       })
     }
     else{
-
-      this.service.increaseQTY(pid,quantity, this.cartData.cart_id).subscribe((res) =>
+      console.log(this.cart[0].cart_id)
+      this.service.increaseQTY(pid,quantity, this.cart[0].cart_id).subscribe((res) =>
       {
         this.cartProducts[index].quantity--;
         console.log(res)
@@ -99,6 +111,4 @@ export class CartComponent implements OnInit {
   }
  
   }
-  // emptyCart(){
-  //   this.service.removeAllCart();
-  // }
+

@@ -26,30 +26,29 @@
                     <tbody>
                         <tr *ngFor="let product of cartProducts index as i">
                             <td>{{i+1}}</td>
-                            <td>{{product.P_title}}</td>
-                            <td><img style="width: 120px;" src="{{product.p_img}}" alt=""></td>
-                            <td style="width: 25%;">{{product.des}}</td>
-                            <th style="width: 12%;">{{product.price}}
-                            </th>
+                            <td>{{product.product_title}}</td>
+                            <td><img style="width: 120px;" src="{{product.product_image}}" alt=""></td>
+                            <td style="width: 25%;">{{product.product_description}}</td>
+                            <td style="width: 12%;">{{product.product_price}}</td>
                             <td style="width: 12%;">
-                                <button class="btn btn-primary btn-sm "  (click)="increamentQTY(product.pid,product.quantity+1, i)">+</button>
+                                <button class="btn btn-primary btn-sm "  (click)="increamentQTY(product.product_id,product.quantity+1, i)">+</button>
                                 {{product.quantity}}
-                                <button class="btn btn-primary btn-sm" (click)="decreamentQTY(product.pid,product.quantity-1, i)">-</button>
+                                <button class="btn btn-primary btn-sm" (click)="decreamentQTY(product.product_id,product.quantity-1, i)">-</button>
                             </td>
                             
                              <td style="width: 12%;">
-                                <div class="d-flex flex-row align-items-center"><span class="d-block">{{product.price * product.quantity}}</span>
+                                <div class="d-flex flex-row align-items-center"><span class="d-block">{{product.product_price * product.quantity}}</span>
                                     </div>
                                 {{product.total}}</td>
                                 
                             <td> 
-                                <button (click)="deleteItemFromCart(product.pid,1)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                <button (click)="deleteItemFromCart(product.product_id,1)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="4"></td>
-                            <td><button class="btn btn-danger">Empty Cart</button></td>
-                            <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
+                            <td><button (click)="emptyCart()" class="btn btn-danger">Empty Cart</button></td>
+                            <td><button class="btn btn-primary" (click) = "shop()">Shop More</button></td>
                             <td><button class="btn btn-success">Checkout</button></td>
                             <td><strong>
                                 GrandTotal = {{total}}

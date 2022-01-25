@@ -16,6 +16,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './component/home/home.component';
 import { CategoriesComponent } from './component/categories/categories.component';
+import { FilterPipe } from './filter.pipe';
 
 
 
@@ -33,7 +34,8 @@ const material = [MatToolbarModule]
     BillingComponent,
     HeaderComponent,
     HomeComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

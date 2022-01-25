@@ -21,8 +21,10 @@ export class ApiserviceService {
     var user = data.email;
     var password = data.password;
     console.log(user)
+    console.log(password)
     return this.http.post(this.loginurl, { user: user, password: password })
   }
+
   getImage(): Observable<any> {
     return this.http.get(this.url);
   }
@@ -48,8 +50,8 @@ export class ApiserviceService {
   getProductById(productId: number): Observable<any> {
     return this.http.get(`http://localhost:3000/product/${productId}`)
   }
-  addItemToCart(cartId: any, Pid: any): Observable<any> {
-    return this.http.post(`http://localhost:3000/cart/add`, { cartId: cartId, ProductId: Pid })
+  addItemToCart(cart_id: any, product_id:number): Observable<any> {
+    return this.http.post(`http://localhost:3000/cart/add`, { cartId: cart_id, productId: product_id })
   }
   deleteItemFromCart(Pid: any, cart_id: number): Observable<any> {
     return this.http.post(`http://localhost:3000/cart/delete/${Pid}`, { cart_id: cart_id })
@@ -70,6 +72,9 @@ export class ApiserviceService {
   decreaseQTY(pid: any, quantity: any, cart_id: number): Observable<any> {
     console.log(pid)
     return this.http.post(`http://localhost:3000/quantity/dec/${pid}`, { quantity: quantity, cart_id: cart_id })
+  }
+  emptyCart(cart_id:any):Observable<any> {
+    return this.http.delete(`http://localhost:3000/cart/empty/${cart_id}`)
   }
   userCheckout(data: any): Observable<any> {
     var firstName = data.firstname;

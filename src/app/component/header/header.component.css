@@ -4,13 +4,13 @@
     margin-left: 20px;
 }
 
-.search-icon {
+/* .search-icon {
     position: relative;
     z-index: 10;
     right: 59%;
     top: 20px;
     color: blue;
-}
+} */
 body{
     margin: 0;
     padding: 0;
@@ -25,6 +25,15 @@ body{
     left: 5%;
     margin-left: 5%;
 }
+.search-container button
+{
+    float: right;
+  background: #ddd;
+  cursor: pointer;
+}
+.search-container button:hover {
+    background: #ccc;
+  }
 h5{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 2px;
