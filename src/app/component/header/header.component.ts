@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiserviceService } from 'src/app/services/apiservice.service';
 import { Product } from '../product';
 
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   user:any;
   searchProductArray:any = []
   
-  constructor( private service:ApiserviceService, private router : Router,private http:HttpClient) {
+  constructor( private activatedRoute:ActivatedRoute, private service:ApiserviceService, private router : Router,private http:HttpClient) {
 
   
   }
@@ -30,6 +30,11 @@ export class HeaderComponent implements OnInit {
     this.service.getSubCategories().subscribe(res => {
       this.subCategories = res
       console.log(this.subCategories)
+    })
+    this.activatedRoute.params.subscribe(params => {
+      console.log(params['search'])
+      console.log(this.activatedRoute.snapshot.paramMap)
+      this.searchTerm = params['search']
     })
     
   }
@@ -48,7 +53,9 @@ export class HeaderComponent implements OnInit {
 
 
   search(){
-    this.router.navigate([`/search/${this.searchTerm}`])
+    // this.router.navigate([`/search/${this.searchTerm}`])
+    this.router.navigate([`/search/${this.searchTerm}`]);
+
   }
   
 }

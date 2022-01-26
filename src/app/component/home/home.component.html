@@ -1,18 +1,22 @@
 <div *ngIf = "searchProductArray" class="search-items">
+    <div style="text-align: center;" class="header mt-5">
+        <h2>You searched for {{searchTerm | titlecase}}</h2>
+    </div>
+    <div class="mt-5 d-flex justify-content-center flex-wrap ">
     <div *ngFor = "let item of searchProductArray">
-      
-        <div class="column" style="width: 250px; height: 190px;">
-            <img class="img-responsive" [src]="item.product_image" alt="product" >
+        <div class="rounded mx-auto d-block" style="width: 250px; height: 190px;">
+            <img  class="card-img-top"  [src]="item.product_image" alt="product" >
         </div>
             <div class="card-body">
                 <p class="card-text">{{item.product_description}}</p> &nbsp;
                 <b><p class="card-text">{{item.product_price}}$</p></b>
               </div>
         
-        <!-- <div class="card-body">
+        <div class="card-body">
             <a  class="card-link btn btn-primary"  (click) = addToCart(item.product_id)>Add to Cart</a>
             <a href="#" class="card-link btn btn-secondary">Order now</a>  
-         </div> -->
+         </div>
+        </div>
     </div>
     <!-- {{searchProductArray | json}} -->
 </div>

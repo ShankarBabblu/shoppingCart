@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.activatedRoute.params.subscribe(params => {
         console.log(params['search'])
+        this.searchTerm = params['search']
         this.getSearchProducts(params['search'])
       })
     },500)
@@ -50,6 +51,7 @@ export class HomeComponent implements OnInit {
   }
   getSearchProducts(search:any)
   {
+    this.searchProductArray = []
     console.log(this.products)
     this.products.forEach((obj: { product_title: any; }) => {
     if(obj.product_title.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
