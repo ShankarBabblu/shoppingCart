@@ -1,22 +1,16 @@
-/* 
-* {
-    box-sizing: border-box;
-}
-
-.column {
-    float: left;
-  
-     padding: 15px;
-    margin: 50px 20px 0px 20px;
-    display: flex;
-    border: 1px solid black; 
-  }  */
 
 img
 {
-  padding: 5px;
-  border: 1px solid blue;
-  width: 30%;
-  margin-left: 10px;
-  display: flex;
+    padding: 35px;
+    border: 1px solid blue;
+    width: 70%;
+    height: 100%;
+    margin-left: 50%;
+    margin-top: 20px;
+    float: right;
+}
+.card-body
+{
+    display: inline-flex;
+    margin-left: 60px;
 }
