@@ -1,3 +1,15 @@
-<div *ngIf = "" class="search-items">
-{{searchProductArray | json}}
+<div *ngIf = "searchProductArray" class="search-items">
+    <div *ngFor = "let item of searchProductArray">
+        <div class="column" style="width: 250px; height: 190px;">
+            <img class="img-responsive" [src]="item.product_image" alt="product" >
+            <!-- Title:{{item.product_title}} 
+           Price: {{item.product_price}}  -->
+        </div>
+        <div class="card-body">
+            <a  class="card-link btn btn-primary"  (click) = addToCart(item.product_id)>Add to Cart</a>
+            <a href="#" class="card-link btn btn-secondary">Order now</a>  
+         </div>
+    </div>
+    <!-- {{searchProductArray | json}} -->
 </div>
+

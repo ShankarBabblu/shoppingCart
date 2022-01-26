@@ -15,12 +15,10 @@ export class HomeComponent implements OnInit {
   products:any;
   searchProductArray:any = []
   searchProduct:any
+  cart_id: any;
   constructor(private http:HttpClient,private service:ApiserviceService, private activatedRoute: ActivatedRoute, private route : Router) {
     this.http.get(`http://localhost:3000/product/images`).subscribe(data => {
-      // Populating usersArray with names from API
-      // data.json().forEach((element:any) => {
-      //  this.productArray.push(element.product_title);
-      // });
+
     });
    }
 
@@ -45,10 +43,6 @@ export class HomeComponent implements OnInit {
   getProductTitles()
   {
     console.log(this.products)
-    // this.products.array.forEach((obj: { product_title: any; }):any => {
-    //   obj.product_title
-    //   console.log(obj.product_title)
-    // });
     this.products.forEach((obj: { product_title: any; }) => {
       obj.product_title
       console.log(obj.product_title)
@@ -65,6 +59,16 @@ export class HomeComponent implements OnInit {
       
     })
     console.log(this.searchProductArray)
+  }
+  addToCart(product_id:number){
+    let cart :any = sessionStorage.getItem("cart")
+    cart = JSON.parse(cart)
+    this.cart_id = cart[0].cart_id
+    console.log(this.cart_id)
+    console.log(product_id)
+    this.service.addItemToCart(this.cart_id,product_id).subscribe(res => {
+      console.log(res)
+    })
   }
 
 }

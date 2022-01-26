@@ -135,7 +135,6 @@ con.connect(function(err) {
   
   app.get('/cart/items/:id', function(req,res) {
     var cartId = req.params.id
-    // let query = `SELECT * FROM shop.cart_item inner join shop.product where shop.product.Pid = shop.cart_item.pid having cart_id=${cartId}`
     let query = `SELECT * FROM shop.cart_items inner join products on cart_items.product_id = products.product_id where cart_id=${cartId}`
     con.query(query, (err, result) => {
       if(err) res.send(err)
