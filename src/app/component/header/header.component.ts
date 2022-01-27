@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   subCategories :any
   user:any;
   searchProductArray:any = []
+  cartProducts:any
   
   constructor( private activatedRoute:ActivatedRoute, private service:ApiserviceService, private router : Router,private http:HttpClient) {
 

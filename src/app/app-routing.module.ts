@@ -9,15 +9,16 @@ import { UploadImagesComponent } from './component/upload-images/upload-images.c
 import { CartComponent } from './component/cart/cart.component';
 import { ProductsComponent } from './component/products/products.component';
 import { SignComponent } from './component/sign/sign.component';
-import { BillingComponent } from './component/billing/billing.component';
 import { HeaderComponent } from './component/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriesComponent } from './component/categories/categories.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
-  {path:'search/:search',component:HomeComponent},
+  {path:'search/:subCategory',component:HomeComponent},
+  {path: 'search/:subCategory/":productCategory', component:HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'aboutus', component: AboutusComponent},
   {path: 'category/:id', component: CategoriesComponent},
@@ -25,9 +26,9 @@ const routes: Routes = [
   {path : 'login',component:LoginComponent},
   {path : 'upload',component:UploadImagesComponent},
   {path: 'cart',component:CartComponent},
+  {path:'checkout',component:CheckoutComponent},
   {path:'products',component:ProductsComponent},
   {path : 'register',component:SignComponent},
-  {path:'billing',component:BillingComponent},
   {path : 'header',component:HeaderComponent},
   
   

@@ -27,9 +27,9 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.activatedRoute.params.subscribe(params => {
-        console.log(params['search'])
-        this.searchTerm = params['search']
-        this.getSearchProducts(params['search'])
+        console.log(params['subCategory'])
+        this.searchTerm = params['subCategory']
+        this.getSearchProducts(params['subCategory'])
       })
     },500)
   }

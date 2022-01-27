@@ -11,12 +11,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UploadImagesComponent } from './component/upload-images/upload-images.component';
 import { SignComponent } from './component/sign/sign.component';
-import { BillingComponent } from './component/billing/billing.component';
 import { HeaderComponent } from './component/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './component/home/home.component';
 import { CategoriesComponent } from './component/categories/categories.component';
 import { FilterPipe } from './filter.pipe';
+import { CheckoutComponent } from './component/checkout/checkout.component';
 
 
 
@@ -31,11 +31,11 @@ const material = [MatToolbarModule]
     ProductsComponent,
     UploadImagesComponent,
     SignComponent,
-    BillingComponent,
     HeaderComponent,
     HomeComponent,
     CategoriesComponent,
-    FilterPipe
+    FilterPipe,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

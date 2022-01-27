@@ -15,7 +15,7 @@ export class CartComponent implements OnInit {
   cart_item:any
   quantity:number = 1
   product: any;
-  total:number =0
+  total:number=0
   constructor(private service:ApiserviceService,private router:Router) { }
 
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class CartComponent implements OnInit {
       console.log(res)
       this.cartProducts = res
       console.log(this.cartProducts)
-      // this.totalPrice()
+      this.totalPrice()
     })
   }
   deleteItemFromCart(product_id:any, index:number) {
@@ -100,14 +100,19 @@ export class CartComponent implements OnInit {
   totalPrice(){ 
     
     let length = this.cartProducts.length
+    console.log(length)
     for(let i=0; i<length; i++){
-      this.total += this.cartProducts[i].price * this.cartProducts[i].quantity
+      this.total+= this.cartProducts[i].product_price * this.cartProducts[i].quantity
     }
     console.log(this.total)
   }
   shop()
   {
     this.router.navigate(['/categories'])
+  }
+  checkOut()
+  {
+     this.router.navigate(['/checkout'])
   }
  
   }

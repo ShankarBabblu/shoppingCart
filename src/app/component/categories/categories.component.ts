@@ -4,6 +4,7 @@ import { ApiserviceService } from 'src/app/services/apiservice.service';
 import { category } from 'src/app/shared/category';
 import { product_category } from 'src/app/shared/productCategory';
 import { sub_category } from 'src/app/shared/subCategory';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-categories',
@@ -22,7 +23,10 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   category : category[] | undefined;
   sub_category : sub_category[] | undefined
   product_category : product_category[] | undefined
-  constructor(private activatedRoute : ActivatedRoute, private service : ApiserviceService) { }
+  showNavigationArrows = false;
+  constructor(config: NgbCarouselConfig,private activatedRoute : ActivatedRoute, private service : ApiserviceService) {
+    config.showNavigationArrows = true;
+   }
 
   getCurrentCategory(currentCategoryId : any) {
     console.log(currentCategoryId)
@@ -53,15 +57,15 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         for(let item of res){
           this.productCategories.push(item)
         }
-        this.getProducts()
+        this.getProducts(res)
       })
     }
   }
 
-  getProducts() {
+  getProducts(productCat:any) {
     console.log(this.productCategories) 
     this.products = []
-    for(var productCategory of this.productCategories){
+    for(var productCategory of productCat){
       this.service.getProducts(productCategory.product_category_id).subscribe(res => {
         for( let item of res){
           this.products.push(item)
@@ -80,6 +84,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       console.log(res)
     })
   }
+
 
   ngOnInit(): void {
     this.currentCategoryId = this.activatedRoute.snapshot.paramMap.get('id')

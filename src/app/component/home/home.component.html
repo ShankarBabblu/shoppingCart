@@ -1,4 +1,4 @@
-<div *ngIf = "searchProductArray" class="search-items">
+<div *ngIf = "searchProductArray.length > 0" class="search-items">
     <div style="text-align: center;" class="header mt-5">
         <h2>You searched for {{searchTerm | titlecase}}</h2>
     </div>
