@@ -23,9 +23,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   category : category[] | undefined;
   sub_category : sub_category[] | undefined
   product_category : product_category[] | undefined
-  showNavigationArrows = false;
-  constructor(config: NgbCarouselConfig,private activatedRoute : ActivatedRoute, private service : ApiserviceService) {
-    config.showNavigationArrows = true;
+  constructor(private activatedRoute : ActivatedRoute, private service : ApiserviceService) {
    }
 
   getCurrentCategory(currentCategoryId : any) {

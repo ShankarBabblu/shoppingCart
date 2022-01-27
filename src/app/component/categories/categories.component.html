@@ -9,20 +9,22 @@
                 {{productCategory.product_category_title}}</h3>        
                 <div class="row d-flex justify-content-center">
                   <div class="mt-5 d-flex justify-content-center flex-wrap ">
+                    
                  <div class="" *ngFor="let product of products" >
                   <div class="card " style="width: 20rem;"  *ngIf = "product.product_category_id == productCategory.product_category_id">
-                    
                   <div class="rounded mx-auto d-block" style="width: 250px; height: 190px;">
-                    
                   <img class="card-img-top"  [src]="product.product_image" alt="product">
                   </div>
+                
+                
+
                   <div class="card-body">
                     <h5 class="card-title">{{product.product_title | titlecase}}</h5>
                     <p class="card-text">{{product.product_description}}</p>
                   </div>
                   <div class="card-body">
                          <a  class="card-link btn btn-primary"  (click) = addToCart(product.product_id)>Add to Cart</a>
-                         <a href="#" class="card-link btn btn-secondary">Order now</a>  
+                         <a href="#" class="card-link btn btn-secondary" [routerLink] = "['/checkout']">Order now</a>  
                        </div>
                 </div>
                 </div>

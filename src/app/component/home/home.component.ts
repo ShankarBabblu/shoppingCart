@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   searchProductArray:any = []
   searchProduct:any
   cart_id: any;
-  constructor(private http:HttpClient,private service:ApiserviceService, private activatedRoute: ActivatedRoute, private route : Router) {
+  constructor(private http:HttpClient,private service:ApiserviceService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.http.get(`http://localhost:3000/product/images`).subscribe(data => {
 
     });
@@ -71,6 +71,11 @@ export class HomeComponent implements OnInit {
     this.service.addItemToCart(this.cart_id,product_id).subscribe(res => {
       console.log(res)
     })
+  }
+  shopNow()
+  {
+    // this.router.navigate['categories'];
+    this.router.navigate(['/categories'])
   }
 
 }
