@@ -77,6 +77,10 @@ export class HomeComponent implements OnInit {
     // this.router.navigate['categories'];
     this.router.navigate(['/categories'])
   }
+  viewAll()
+  {
+    this.router.navigate(['/categories'])
+  }
 
 }
 

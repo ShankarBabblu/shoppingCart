@@ -23,6 +23,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   category : category[] | undefined;
   sub_category : sub_category[] | undefined
   product_category : product_category[] | undefined
+  prodData:any = []
   constructor(private activatedRoute : ActivatedRoute, private service : ApiserviceService) {
    }
 
@@ -95,5 +96,5 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       this.currentComponent = null
       this.subCategories = null
   }
-
+  
 }
